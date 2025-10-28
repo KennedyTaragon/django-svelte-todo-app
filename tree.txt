@@ -1,0 +1,36 @@
+.
+├── backend
+│   ├── db.sqlite3
+│   ├── manage.py
+│   ├── requirements.txt
+│   ├── start.sh
+│   ├── todos
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   └── todo_system
+│       ├── asgi.py
+│       ├── __init__.py
+│       ├── settings.py
+│       ├── urls.py
+│       └── wsgi.py
+└── frontend
+    ├── package.json
+    ├── package-lock.json
+    ├── README.md
+    ├── rollup.config.js
+    ├── scripts
+    │   └── setupTypeScript.js
+    └── src
+        ├── api.js
+        ├── App.svelte
+        ├── components
+        │   └── TodoList.svelte
+        └── main.js
+
+8 directories, 26 files
