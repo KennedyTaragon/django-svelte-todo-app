@@ -16,7 +16,7 @@ Designed as a **complete CRUD system** for managing tasks — it’s a **product
 
 ---
 
-## 🧩 Project Structure
+##  Project Structure
 
 django-svelte-todo/
 ├── backend/

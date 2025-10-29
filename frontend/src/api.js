@@ -1,26 +1,43 @@
-// frontend/src/api.js
-// Small helper module for calling Django todos API.
-
 const BASE = 'http://127.0.0.10:8010/api/'; 
 
 async function handleRes(res) {
-  // handling non-2xx responses
   if (!res.ok) {
-    // parsing JSON error
     let body;
     try { body = await res.json(); } catch { body = await res.text(); }
     throw new Error(`${res.status} ${res.statusText} — ${JSON.stringify(body)}`);
   }
-  // if no content (204), return null
   return res.status === 204 ? null : res.json();
 }
 
-// src/api.js
+// GET - fetch all todos
 export async function fetchTodos() {
-    const response = await fetch('http://127.0.0.10:8010/api/');
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return await response.json();
+  const res = await fetch(BASE);
+  return handleRes(res);
+}
+
+// POST - create a new todo
+export async function createTodo(todoData) {
+  const res = await fetch(BASE + 'create/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(todoData),
+  });
+  return handleRes(res);
+}
+//PUT - Editing
+export async function updateTodo(id, updatedData) {
+  const res = await fetch(`${BASE}update/${id}/`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(updatedData),
+  });
+  return handleRes(res);
+}
+// DELETE - remove a todo
+export async function deleteTodo(id) {
+  const res = await fetch(`${BASE}delete/${id}/`, {
+    method: 'DELETE',
+  });
+  return handleRes(res);
 }
 
